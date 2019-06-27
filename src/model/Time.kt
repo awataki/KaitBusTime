@@ -4,7 +4,11 @@ import io.ktor.util.date.WeekDay
 import java.time.LocalTime
 
 data class Time(
-    val ID: Int,
-    val Time: LocalTime,
-    val WeekDay: WeekDay
+    val id: Int,
+    val time: LocalTime,
+    val weekDay: WeekDay,
+    val type: BusType,
+    val from: BusStop,
+    val to: BusStop
 )
+
