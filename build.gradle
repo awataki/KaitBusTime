@@ -35,5 +35,6 @@ dependencies {
     implementation "ch.qos.logback:logback-classic:$logback_version"
     implementation "io.ktor:ktor-server-core:$ktor_version"
     implementation "io.ktor:ktor-gson:$ktor_version"
+    implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.4.0'
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
 }
