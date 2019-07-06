@@ -31,9 +31,12 @@ class TimeRepository(argDB: Connection) : TimeRepositoryInterface {
 
         try {
             stmt = db.prepareStatement(query)
-            stmt.setInt(1, now.hour)
-            stmt.setInt(2, now.minute)
-            stmt.setInt(3, weekType)
+            stmt.let {
+                it.setInt(1, now.hour)
+                it.setInt(2, now.minute)
+                it.setInt(3, now.hour)
+                it.setInt(4, weekType)
+            }
             val resultSet: ResultSet? = stmt.executeQuery()
             resultSet?.next()
             result = Time(
