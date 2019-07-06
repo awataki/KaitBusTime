@@ -5,6 +5,7 @@ import model.BusStop
 import model.BusType
 import model.Time
 import exception.NoDataException
+import model.WeekType
 import repository.msqyl.TimeRepository
 import repository.msqyl.TimeRepositoryInterface
 import java.time.LocalTime
@@ -17,7 +18,7 @@ class TimeRepositoryTest {
     fun FindNext() {
         val conn = java.sql.DriverManager.getConnection("jdbc:mariadb://localhost:3306/bustime", "root", "")
         val fr = TimeRepository(conn)
-        val ac = Time(0, LocalTime.of(1, 20), WeekDay.MONDAY, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
+        val ac = Time(0, LocalTime.of(1, 20), WeekType.BOTH, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
         val ex: Result<Time> = kotlin.runCatching {
             fr.findNext()
         }
@@ -37,7 +38,7 @@ class TimeRepositoryTest {
         val conn = java.sql.DriverManager.getConnection("jdbc:mariadb://localhost:3306/bustime", "root", "")
         val fr: TimeRepositoryInterface = TimeRepository(conn)
         // try TrueCase
-        val ac = Time(0, LocalTime.of(1, 20), WeekDay.MONDAY, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
+        val ac = Time(0, LocalTime.of(1, 20), WeekType.BOTH, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
         var ex: Result<Time?> = kotlin.runCatching {
             fr.findOne(0)
         }
