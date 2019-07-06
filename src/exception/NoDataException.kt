@@ -1,3 +1,3 @@
-package Exception
+package exception
 
 class NoDataException : Exception()
