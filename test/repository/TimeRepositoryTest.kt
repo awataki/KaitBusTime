@@ -18,7 +18,7 @@ class TimeRepositoryTest {
     fun FindNext() {
         val conn = java.sql.DriverManager.getConnection("jdbc:mariadb://localhost:3306/bustime", "root", "")
         val fr = TimeRepository(conn)
-        val ac = Time(0, LocalTime.of(1, 20), WeekType.BOTH, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
+        val ac = Time(1, LocalTime.of(23, 59), WeekType.BOTH, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
         val ex: Result<Time> = kotlin.runCatching {
             fr.findNext()
         }
@@ -55,7 +55,7 @@ class TimeRepositoryTest {
         // No found exception
         ex = kotlin.runCatching {
             // Invalid Value
-            fr.FindOne(9999)
+            fr.findOne(9999)
         }
         if (ex.isSuccess) {
             fail("actual fail FIndOne() but yet")

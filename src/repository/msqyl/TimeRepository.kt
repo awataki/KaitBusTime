@@ -24,18 +24,19 @@ class TimeRepository(argDB: Connection) : TimeRepositoryInterface {
         val now = LocalTime.now()
         val cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"), Locale.JAPAN)
         val weekDay = WeekDay.from(cal.get(Calendar.DAY_OF_WEEK) - 1)
-        var query = "SELECT * FROM time_table WHERE hour > ? AND minutes > ? AND weekday = ? OR weekday = 3 LIMIT 1"
+        var query = "SELECT * FROM time_table WHERE hour > ? AND minutes > ? AND weekday = ? OR weekday = 2 LIMIT 1"
         var weekType = if (weekDay == WeekDay.SUNDAY || weekDay == WeekDay.SATURDAY) 1 else 0
-
         lateinit var stmt: PreparedStatement
         try {
             stmt = db.prepareStatement(query)
-            stmt.setInt(now.hour, now.minute, weekType)
+            stmt.setInt(1, now.hour)
+            stmt.setInt(2, now.minute)
+            stmt.setInt(3, weekType)
             val resultSet: ResultSet? = stmt.executeQuery()
+            resultSet?.next()
             result = Time(
                 id = resultSet?.getInt("id") ?: throw NoDataException(),
                 time = LocalTime.of(resultSet.getInt("hour"), resultSet.getInt("minutes")),
-                //TODO 要:平日を表現するために独自定義
                 weekDay = WeekType.fromValue(resultSet.getInt("weekday")),
                 type = BusType.fromID(resultSet.getInt("type")),
                 from = BusStop.fromID(resultSet.getInt("from")),
@@ -61,7 +62,7 @@ class TimeRepository(argDB: Connection) : TimeRepositoryInterface {
     }
 
     override fun findOne(id: Int): Time {
-        val query = "SELECT * FROM time WHERE id = "
+        return Time()
     }
 }
 
