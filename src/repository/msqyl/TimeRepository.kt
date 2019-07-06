@@ -24,9 +24,11 @@ class TimeRepository(argDB: Connection) : TimeRepositoryInterface {
         val now = LocalTime.now()
         val cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"), Locale.JAPAN)
         val weekDay = WeekDay.from(cal.get(Calendar.DAY_OF_WEEK) - 1)
-        var query = "SELECT * FROM time_table WHERE hour > ? AND minutes > ? AND weekday = ? OR weekday = 2 LIMIT 1"
+        var query =
+            "SELECT * FROM time_table WHERE (hour = ? AND minutes > ?) OR hour > ? AND weekday = ? OR weekday = 2 ORDER BY hour ASC,minutes ASC LIMIT 1"
         var weekType = if (weekDay == WeekDay.SUNDAY || weekDay == WeekDay.SATURDAY) 1 else 0
         lateinit var stmt: PreparedStatement
+
         try {
             stmt = db.prepareStatement(query)
             stmt.setInt(1, now.hour)
