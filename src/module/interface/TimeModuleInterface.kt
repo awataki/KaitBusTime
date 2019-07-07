@@ -1,4 +1,4 @@
-package module
+package module.`interface`
 
 import model.Direction
 
