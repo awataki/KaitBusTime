@@ -9,8 +9,6 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.locations.Locations
 import io.ktor.routing.Routing
 import io.ktor.routing.get
-import moe.yayoi.bus.routes.getById
-import moe.yayoi.bus.routes.getNext
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 

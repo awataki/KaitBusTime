@@ -1,6 +1,5 @@
 package moe.yayoi.bus.repository
 
-import io.ktor.util.date.WeekDay
 import exception.NoDataException
 import model.*
 import repository.msqyl.TimeRepository

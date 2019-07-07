@@ -1,6 +1,5 @@
 package model
 
-import io.ktor.util.date.WeekDay
 import java.time.LocalTime
 
 data class Time(

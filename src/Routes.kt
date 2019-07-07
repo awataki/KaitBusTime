@@ -1,11 +1,10 @@
-package moe.yayoi.bus.routes
+package moe.yayoi.bus
 
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.locations.Location
 import io.ktor.locations.get
 import io.ktor.response.respond
-import io.ktor.response.respondText
 import io.ktor.routing.Route
 import io.ktor.routing.get
 import model.Direction
@@ -13,7 +12,6 @@ import module.TimeModule
 import org.slf4j.LoggerFactory
 import repository.msqyl.TimeRepository
 import util.DBUtil
-import java.lang.Exception
 
 fun Route.getById() {
     get("/get/{userId}/") {
