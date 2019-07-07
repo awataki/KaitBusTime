@@ -2,10 +2,7 @@ package repository.msqyl
 
 import exception.NoDataException
 import io.ktor.util.date.WeekDay
-import model.BusStop
-import model.BusType
-import model.Time
-import model.WeekType
+import model.*
 import org.slf4j.LoggerFactory
 import java.sql.Connection
 import java.sql.PreparedStatement
@@ -19,13 +16,13 @@ class TimeRepository(argDB: Connection) : TimeRepositoryInterface {
     private val db: Connection = argDB
     private val log = LoggerFactory.getLogger("TimeRepository")
 
-    override fun findNext(): Time {
+    override fun findNext(directon: Direction): Time {
         var result: Time? = null
         val now = LocalTime.now()
         val cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"), Locale.JAPAN)
         val weekDay = WeekDay.from(cal.get(Calendar.DAY_OF_WEEK) - 1)
         var query =
-            "SELECT * FROM time_table WHERE (hour = ? AND minutes > ?) OR hour > ? AND weekday = ? OR weekday = 2 ORDER BY hour ASC,minutes ASC LIMIT 1"
+            "SELECT * FROM time_table WHERE (hour = ? AND minutes > ?) OR hour > ? AND weekday = ? OR weekday = 2 AND direction = ? ORDER BY hour ASC,minutes ASC LIMIT 1"
         var weekType = if (weekDay == WeekDay.SUNDAY || weekDay == WeekDay.SATURDAY) 1 else 0
         lateinit var stmt: PreparedStatement
 
@@ -36,6 +33,7 @@ class TimeRepository(argDB: Connection) : TimeRepositoryInterface {
                 it.setInt(2, now.minute)
                 it.setInt(3, now.hour)
                 it.setInt(4, weekType)
+                it.setInt(5, directon.value)
             }
             val resultSet: ResultSet? = stmt.executeQuery()
             resultSet?.next()

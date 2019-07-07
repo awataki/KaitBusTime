@@ -1,11 +1,8 @@
 package moe.yayoi.bus.repository
 
 import io.ktor.util.date.WeekDay
-import model.BusStop
-import model.BusType
-import model.Time
 import exception.NoDataException
-import model.WeekType
+import model.*
 import repository.msqyl.TimeRepository
 import repository.msqyl.TimeRepositoryInterface
 import java.time.LocalTime
@@ -19,8 +16,9 @@ class TimeRepositoryTest {
         val conn = java.sql.DriverManager.getConnection("jdbc:mariadb://localhost:3306/bustime", "root", "")
         val fr = TimeRepository(conn)
         val ac = Time(1, LocalTime.of(23, 59), WeekType.BOTH, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
+        val d = Direction.CAMPUS
         val ex: Result<Time> = kotlin.runCatching {
-            fr.findNext()
+            fr.findNext(d)
         }
 
         if (ex.isSuccess) {
