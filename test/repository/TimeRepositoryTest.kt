@@ -15,7 +15,7 @@ import kotlin.test.fail
 
 class TimeRepositoryTest {
     @Test
-    fun FindNext() {
+    fun findNext() {
         val conn = java.sql.DriverManager.getConnection("jdbc:mariadb://localhost:3306/bustime", "root", "")
         val fr = TimeRepository(conn)
         val ac = Time(1, LocalTime.of(23, 59), WeekType.BOTH, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
@@ -34,7 +34,7 @@ class TimeRepositoryTest {
     }
 
     @Test
-    fun FindOneTest() {
+    fun findOneTest() {
         val conn = java.sql.DriverManager.getConnection("jdbc:mariadb://localhost:3306/bustime", "root", "")
         val fr: TimeRepositoryInterface = TimeRepository(conn)
         // try TrueCase
