@@ -67,10 +67,7 @@ class TimeRepository(argDB: Connection) : TimeRepositoryInterface {
     }
 
     override fun findOne(id: Int): Time {
+        //TODO 未実装
         return Time()
     }
-}
-
-private fun Any.setInt(hour: Int, minute: Int, weekType: Int) {
-
 }
