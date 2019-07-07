@@ -61,7 +61,7 @@ class TimeRepository(argDB: Connection) : TimeRepositoryInterface {
             }
         }
         // nullだったら空構造体を返す
-        return result ?: Time()
+        return result ?: throw NoDataException()
     }
 
     override fun findOne(id: Int): Time {
