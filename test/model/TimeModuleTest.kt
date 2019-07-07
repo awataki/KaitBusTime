@@ -2,6 +2,7 @@ package moe.yayoi.bus.model
 
 import model.Direction
 import model.Time
+import module.TimeModule
 import module.`interface`.TimeModuleInterface
 import repository.msqyl.TimeRepositoryInterface
 import java.time.LocalTime
@@ -14,7 +15,7 @@ class TimeModuleTest {
     private val tr = DummyTimeRepo()
     @Test
     fun getNext() {
-        val tm: TimeModuleInterface = Timemodule(tr)
+        val tm: TimeModuleInterface = TimeModule(tr)
         var d: Direction = Direction.CAMPUS
         val ac = Time(0, LocalTime.of(0, 0))
 
