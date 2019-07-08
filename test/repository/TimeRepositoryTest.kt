@@ -30,34 +30,34 @@ class TimeRepositoryTest {
         }
     }
 
-    @Test
-    fun findOneTest() {
-        val conn = java.sql.DriverManager.getConnection("jdbc:mariadb://localhost:3306/bustime", "root", "")
-        val fr: TimeRepositoryInterface = TimeRepository(conn)
-        // try TrueCase
-        val ac = Time(0, LocalTime.of(1, 20), WeekType.BOTH, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
-        var ex: Result<Time?> = kotlin.runCatching {
-            fr.findOne(0)
-        }
-
-        if (ex.isSuccess) {
-            assertEquals(ac, ex.getOrNull())
-        } else {
-            val e = ex.exceptionOrNull()
-            e?.printStackTrace()
-        }
-
-        // try InvalidCase
-
-        // No found exception
-        ex = kotlin.runCatching {
-            // Invalid Value
-            fr.findOne(9999)
-        }
-        if (ex.isSuccess) {
-            fail("actual fail FIndOne() but yet")
-        } else {
-            val e = ex.exceptionOrNull() as? NoDataException ?: fail("Excepted invalid error")
-        }
-    }
+//    @Test
+//    fun findOneTest() {
+//        val conn = java.sql.DriverManager.getConnection("jdbc:mariadb://localhost:3306/bustime", "root", "")
+//        val fr: TimeRepositoryInterface = TimeRepository(conn)
+//        // try TrueCase
+//        val ac = Time(0, LocalTime.of(1, 20), WeekType.BOTH, BusType.DIRECT, BusStop.CENTER, BusStop.ODORI)
+//        var ex: Result<Time?> = kotlin.runCatching {
+//            fr.findOne(0)
+//        }
+//
+//        if (ex.isSuccess) {
+//            assertEquals(ac, ex.getOrNull())
+//        } else {
+//            val e = ex.exceptionOrNull()
+//            e?.printStackTrace()
+//        }
+//
+//        // try InvalidCase
+//
+//        // No found exception
+//        ex = kotlin.runCatching {
+//            // Invalid Value
+//            fr.findOne(9999)
+//        }
+//        if (ex.isSuccess) {
+//            fail("actual fail FIndOne() but yet")
+//        } else {
+//            val e = ex.exceptionOrNull() as? NoDataException ?: fail("Excepted invalid error")
+//        }
+//    }
 }
