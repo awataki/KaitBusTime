@@ -1,4 +1,4 @@
-package moe.yayoi.bus.model
+package moe.yayoi.bus.module
 
 import model.Direction
 import model.Time
