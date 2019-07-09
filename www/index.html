@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KatiBusTime</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/topbar.css">
+</head>
+<body>
+<div id="top-bar">
+    <ul>
+        <li id="btn-campus" class="direct">Campus</li>
+        <li id="btn-station" class="direct">Station</li>
+    </ul>
+</div>
+<div id="result">
+    <div class="error"></div>
+    <div id="bus-stop">
+        <span id="bus-stop-from" class="bus-stop-value value left"></span>
+        <span id="arrow" class="separator"> → </span>
+        <span id="bus-stop-to" class="bus-stop-value value right"></span>
+    </div>
+    <div id="time">
+        <span id="hour" class="time-value value left"></span>
+        <span id="colon" class="separator"> : </span>
+        <span id="minute" class="time-value value right"></span>
+    </div>
+</div>
+<script src="assets/js/jquery-3.4.1.min.js"></script>
+<script type="module" src="assets/js/index.js"></script>
+</body>
+</html>
