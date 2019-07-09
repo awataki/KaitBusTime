@@ -5,7 +5,7 @@ create table time_table
     minutes   int not null,
     weekday   int not null,
     type      int not null,
-    from      int not null,
+    `from`    int not null,
     `to`      int not null,
     direction int null,
     constraint time_table_pk
