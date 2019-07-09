@@ -30,3 +30,10 @@ li {
     background: #ffb74d;
     height: 80px;
 }
+
+.app-name {
+    position: absolute;
+    right: 0%;
+    margin: 25px 15px;
+    color: aliceblue;
+}
