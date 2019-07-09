@@ -8,4 +8,10 @@
 git clone https://github.com/awataki/KaitBusTime.git
 cd KaitBusTime && ./greadlew run
 ```
+accsess to localhost 10841
 
+## Run with Advanced Port
+${your-editor} resources/application.conf
+
+change 
+`port = ${your-port}`
