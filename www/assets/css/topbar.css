@@ -1,0 +1,26 @@
+
+ul {
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    list-style: none;
+    font-size: 30px;
+    margin: 0 50px;
+}
+
+li {
+    color: #fff;
+    padding: 25px 15px;
+    cursor: pointer;
+    box-shadow: #000;
+}
+
+
+#top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffb74d;
+    height: 80px;
+}
