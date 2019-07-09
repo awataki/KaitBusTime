@@ -44,7 +44,6 @@ fun Route.getNext() {
             call.response.status(HttpStatusCode.BadRequest)
         } catch (e: Exception) {
             log.error(e.message)
-            e.printStackTrace()
             call.response.status(HttpStatusCode.InternalServerError)
         }
     }

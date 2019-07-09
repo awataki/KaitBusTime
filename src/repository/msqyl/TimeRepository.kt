@@ -46,9 +46,9 @@ class TimeRepository(argDB: Connection) : TimeRepositoryInterface {
                 to = BusStop.fromID(resultSet.getInt("to"))
             )
         } catch (e: NoDataException) {
-            log.error("NoDataException,", e.printStackTrace())
+            log.error("NoDataException,")
         } catch (e: SQLException) {
-            log.error("Mysql exception:", e.printStackTrace())
+            log.error("Mysql exception:")
         } catch (e: Exception) {
             log.error(e.printStackTrace().toString())
             // 出るとは思わないが取りえず
