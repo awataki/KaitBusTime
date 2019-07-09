@@ -5,7 +5,11 @@ ul {
     display: flex;
     list-style: none;
     font-size: 30px;
-    margin: 0 50px;
+    margin: 0 80px;
+}
+
+i {
+    margin: 0 10px;
 }
 
 li {
@@ -13,6 +17,8 @@ li {
     padding: 25px 15px;
     cursor: pointer;
     box-shadow: #000;
+    width: 180px;
+    text-align: center;
 }
 
 
