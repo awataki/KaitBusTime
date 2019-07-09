@@ -9,10 +9,13 @@ ul {
 }
 
 i {
+    height: 30px;
     margin: 0 10px;
 }
 
 li {
+    display: inline-block;
+    height: 30px;
     color: #fff;
     padding: 25px 15px;
     cursor: pointer;
